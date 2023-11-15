@@ -10,16 +10,7 @@ import { AiOutlineStar } from "react-icons/ai";
 export default function ExcercisesComponent() {
 
 
-  const options = {
-    method: 'GET',
-    url: 'https://exercisedb.p.rapidapi.com/exercises',
-    headers: {
-      'X-RapidAPI-Key': '830872fc41msh784d7f23e99cb23p1fdb8djsn6f9e88ce458b',
-      'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-    }
-  }
+ 
 
   const [excercises, setexcercises] = useState([])
 
@@ -47,7 +38,7 @@ export default function ExcercisesComponent() {
   const getExcercises = async function () {
 
     try {
-      const response = await axios.request(options);
+      const response = await axios.get('api/getExcercises');
       console.log(response);
       setexcercises(response.data)
     }
