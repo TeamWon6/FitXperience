@@ -1,5 +1,19 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import axios from 'axios';
 
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+export default async function handler(req, res) {
+  const options = {
+    method: 'GET',
+    url: 'https://exercisedb.p.rapidapi.com/exercises',
+    headers: {
+      'X-RapidAPI-Key': '830872fc41msh784d7f23e99cb23p1fdb8djsn6f9e88ce458b',
+      'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
+    }
+  }
+
+  const response = await axios.request(options);
+  console.log(response);
+
+  res.send(response.data);
+  
 }
