@@ -1,0 +1,48 @@
+.page{
+    
+}
+.page > h1{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.page .boxes{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 50px;
+}
+.page .boxes .box{
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 250px;
+    height: 320px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border: solid rgba(0,0,0, 0.1) 1px;
+}
+.page .boxes .box h3{
+    white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.page .boxes .box img{
+    width: 200px;
+    height: 200px;
+}
+.page .boxes .box .save{
+    display: flex;
+    align-items: center;
+    float: right;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.page .pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
