@@ -20,7 +20,7 @@ export default function LoginComponent() {
     <div className={styles.loginPage}>
         <div className={styles.loginCard}>
             <div className={styles.logoContainer}>
-                <img src='/Assets/Images/logo.jpg' alt="logo" />
+                <img src='/images/logo.jpg' alt="logo" />
                 <p>fitxperience</p>
             </div>
 
