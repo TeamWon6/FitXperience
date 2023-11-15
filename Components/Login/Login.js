@@ -20,11 +20,11 @@ export default function LoginComponent() {
     <div className={styles.loginPage}>
         <div className={styles.loginCard}>
             <div className={styles.logoContainer}>
-                <img src='/Assets/Images/img/frontpage/onlyLogo1.png' alt="logo" />
-                <p>PrepKnight</p>
+                <img src='/Assets/Images/logo.jpg' alt="logo" />
+                <p>fitxperience</p>
             </div>
 
-            <p className={styles.text}>Login to prepknight to continue</p>
+            <p className={styles.text}>Login to fitxperience to continue</p>
 
             <div className={styles.methods}>
                 
