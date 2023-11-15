@@ -20,7 +20,7 @@
     border-radius: 20px;
     padding: 20px;
     width: 250px;
-    height: 320px;
+    height: 370px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border: solid rgba(0,0,0, 0.1) 1px;
 }
@@ -40,6 +40,10 @@ text-overflow: ellipsis;
     margin-top: 20px;
     cursor: pointer;
 }
+.page .boxes .box .save p{
+    margin: 0;
+}
+
 .page .pagination{
     display: flex;
     justify-content: center;
