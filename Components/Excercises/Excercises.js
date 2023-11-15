@@ -15,7 +15,9 @@ export default function ExcercisesComponent() {
     url: 'https://exercisedb.p.rapidapi.com/exercises',
     headers: {
       'X-RapidAPI-Key': '830872fc41msh784d7f23e99cb23p1fdb8djsn6f9e88ce458b',
-      'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+      'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
     }
   }
 
