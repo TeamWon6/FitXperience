@@ -9,8 +9,8 @@ import { AiOutlineStar } from "react-icons/ai";
 
 export default function ExcercisesComponent() {
 
-
- 
+  
+  
 
   const [excercises, setexcercises] = useState([])
 
@@ -49,12 +49,14 @@ export default function ExcercisesComponent() {
 
   useEffect(() => { getExcercises() }, [])
 
-
+  function capitalizeFirstLetter(str) {
+    return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  }
 
 
   return (
     <div className={styles.page}>
-      <h1 className='text-main'>Excercises</h1>
+      <h1 className='text-main'>Exercises</h1>
 
       <div className={styles.boxes}>
         {
@@ -63,7 +65,7 @@ export default function ExcercisesComponent() {
               <div className={styles.box}>
                 <img src={item.gifUrl} alt="" />
                 <div className={styles.body}>
-                  <h3 className='text-dark'>{item.name}</h3>
+                  <h3 className='text-dark'>{capitalizeFirstLetter(item.name)}</h3>
                   <p>Target: {item.target}</p>
 
                   <div className={styles.save}>
