@@ -19,7 +19,6 @@ export default async function handler (req,res){
         return res.end();
     }
     const currentUser = await User.findOne({id:token.sub}).exec();
-    console.log(currentUser)
     
     if(currentUser){
         res.send(currentUser)
