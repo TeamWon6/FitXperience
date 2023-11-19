@@ -20,7 +20,7 @@ const links = [
   },
   {
     name: 'Food Items',
-    href: 'FoodItems',
+    href: 'Food',
   },
   {
     name: 'Meal Plans',

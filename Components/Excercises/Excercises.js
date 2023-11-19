@@ -4,7 +4,10 @@ import styles from './Excercises.module.css'
 import axios from 'axios'
 import Pagination from 'react-bootstrap/Pagination';
 import { AiOutlineStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 
+
+axios.defaults.withCredentials = true;
 
 
 export default function ExcercisesComponent() {
@@ -13,8 +16,27 @@ export default function ExcercisesComponent() {
  
 
   const [excercises, setexcercises] = useState([])
+  const [savedExcercises, setsavedExcercises] = useState([])
 
-  if(!excercises)return;
+  console.log(savedExcercises)
+
+  async function saveExcercise(id){
+
+        axios.get('api/saveExcercise?id=' + id);
+
+    let index = savedExcercises.indexOf(id);
+    if(index == -1){
+      setsavedExcercises([...savedExcercises, id]);
+      return
+    }
+    let newArr = savedExcercises
+    newArr.splice(index,1)
+    setexcercises(newArr)
+
+  }
+
+
+  if(!excercises || !savedExcercises)return;
 
 
   const [currentPage, setcurrentPage] = useState(0)
@@ -39,15 +61,28 @@ export default function ExcercisesComponent() {
 
     try {
       const response = await axios.get('api/getExcercises');
-      console.log(response);
       setexcercises(response.data)
     }
     catch (e) {
-      console.log(e);
+    }
+  }
+  const getSavedExcercises = async function () {
+
+    try {
+      const response = await axios.get('api/getSavedExcercises');
+      console.log(response);
+      let arr = [];
+      response.data.forEach(elem=>{
+        console.log(elem);
+        arr.push(elem.id);
+      })
+      setsavedExcercises(arr);
+    }
+    catch (e) {
     }
   }
 
-  useEffect(() => { getExcercises() }, [])
+  useEffect(() => { getExcercises(); getSavedExcercises() }, [])
 
 
 
@@ -66,10 +101,21 @@ export default function ExcercisesComponent() {
                   <h3 className='text-dark'>{item.name}</h3>
                   <p>Target: {item.target}</p>
 
-                  <div className={styles.save}>
+                  {
+                    savedExcercises.includes(item.id)?
+                    <div className={styles.save} onClick={()=>{saveExcercise(item.id)}}>
+                    <AiFillStar size='24px' className='text-main'/>
+                    <p className='text-main'>Saved</p>
+                  </div>
+                    :
+ 
+                  <div className={styles.save} onClick={()=>{saveExcercise(item.id)}}>
                     <AiOutlineStar size='24px' className='text-main'/>
                     <p className='text-main'>Save</p>
                   </div>
+
+                  }
+
                 </div>
               </div>
             )
