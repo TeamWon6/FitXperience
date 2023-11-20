@@ -102,8 +102,7 @@ export default function HomeComponent({child}) {
                         style={{
                             // padding: '50px 7% 0px 7%',
                             boxSizing: 'border-box',
-                            width: '90%',
-                            maxWidth: '1700px',
+                            width: '100%',
                             margin: 'auto',
                             // padding: '20px 0 20px 0',
                             position: 'relative',

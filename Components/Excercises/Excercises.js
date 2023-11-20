@@ -5,6 +5,8 @@ import axios from 'axios'
 import Pagination from 'react-bootstrap/Pagination';
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
+import { IoIosClose } from "react-icons/io";
+
 
 
 axios.defaults.withCredentials = true;
@@ -17,8 +19,9 @@ export default function ExcercisesComponent() {
 
   const [excercises, setexcercises] = useState([])
   const [savedExcercises, setsavedExcercises] = useState([])
+  
+  const [selectedExcercise, setselectedExcercise] = useState(null)
 
-  console.log(savedExcercises);
 
 
   async function saveExcercise(id){
@@ -32,17 +35,14 @@ export default function ExcercisesComponent() {
 
     let index = savedExcercises.indexOf(id);
     if(index == -1){
-      console.log('saving');
       setsavedExcercises([...savedExcercises, id]);
       return
     }
 
-    console.log('unsaving');
 
     let newArr = savedExcercises
     newArr.splice(index,1)
 
-    console.log(newArr);
 
     setsavedExcercises([...newArr])
 
@@ -98,17 +98,43 @@ export default function ExcercisesComponent() {
 }, [currentPage])
 
 
-
-
+function viewDetails(item){
+  setselectedExcercise(item);
+}
   return (
+
+
+
     <div className={styles.page}>
+
+      {
+selectedExcercise  &&
+        <div className={`overlay ${styles.overlay} ${selectedExcercise?'': styles.close}`}>
+        <div className={styles.popup}>
+            <h3>{selectedExcercise.title}</h3>
+            <IoIosClose className={styles.close} size={'32px'} onClick={()=>{setselectedExcercise(null)}}/>
+            <img src={selectedExcercise.gifUrl} alt="" />
+            <p>Target Muscle: {selectedExcercise.target}</p>
+            <h4>Instructions</h4>
+            {
+              selectedExcercise.instructions.map(elem=>{
+                return(
+                  <p>{elem}</p>
+                )
+              })
+            }
+        </div>
+      </div>
+      }
+
+
       <h1 className='text-main'>Excercises</h1>
 
       <div className={styles.boxes}>
         {
           excercises.map(item => {
             return (
-              <div className={styles.box}>
+              <div className={styles.box} onClick={()=>{viewDetails(item)}}>
                 <img src={item.gifUrl} alt="" />
                 <div className={styles.body}>
                   <h3 className='text-dark'>{item.name}</h3>
