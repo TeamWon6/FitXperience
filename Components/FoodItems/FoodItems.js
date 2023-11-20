@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import styles2 from './FoodItems.module.css'
 import styles from '../Excercises/Excercises.module.css'
 import { IoIosSearch } from "react-icons/io";
@@ -9,8 +9,8 @@ import Pagination from 'react-bootstrap/Pagination';
 
 export default function FoodItems() {
 
+    const search = useRef(null);
     const [food, setfood] = useState(null)
-
     const [currentPage, setcurrentPage] = useState(0)
 
     const perPage = 8;

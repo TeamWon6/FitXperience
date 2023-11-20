@@ -25,19 +25,25 @@ export default async function handler(req, res) {
 
     if (!token || !token.sub) {
         res.status(401).end();
-        return
+        return res.end();
     }
 
     else {
         currentUser = await User.findOne({ id: token.sub }).exec();
     }
 
-    let es = await ExcerciseSaved.find({user: currentUser._id, excerciseId: ''+id});
+    let es = await ExcerciseSaved.find({user: currentUser._id, excerciseId: ''+id}).exec();
+    console.log('does this already exist');
+    console.log(es);
 
-    if(es){
+    if(es.length > 0){
+        console.log('yes');
+        let es = await ExcerciseSaved.deleteOne({user: currentUser._id, excerciseId: ''+id}).exec();
         res.status(409).end();
         return;
     }
+
+    console.log('no');
 
 
     es = new ExcerciseSaved({
@@ -46,6 +52,7 @@ export default async function handler(req, res) {
     })
 
     await es.save();
+    console.log('saved');
     res.status(200).end();
 
 }

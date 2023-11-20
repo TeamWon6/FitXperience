@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 // import styles from './Excercises.module.css'
-import styles from './Excercises.module.css'
+import styles from '../Excercises/Excercises.module.css'
 import axios from 'axios'
 import Pagination from 'react-bootstrap/Pagination';
 import { AiOutlineStar } from "react-icons/ai";
@@ -10,10 +10,8 @@ import { AiFillStar } from "react-icons/ai";
 axios.defaults.withCredentials = true;
 
 
-export default function ExcercisesComponent() {
+export default function SavedExcercisesComponent() {
 
-
- 
 
   const [excercises, setexcercises] = useState([])
   const [savedExcercises, setsavedExcercises] = useState([])
@@ -66,19 +64,12 @@ export default function ExcercisesComponent() {
     setcurrentPage(prev=>prev-1)
   }
 
-  const getExcercises = async function () {
-
-    try {
-      const response = await axios.get('api/getExcercises' ,{ params: { page: currentPage } });
-      setexcercises(response.data)
-    }
-    catch (e) {
-    }
-  }
+ 
   const getSavedExcercises = async function () {
     console.log('getting saved data');
     try {
       const response = await axios.get('api/getSavedExcercises');
+      setexcercises(response.data);
       let arr = [];
       response.data.forEach(elem=>{
         arr.push(elem.id);
@@ -89,20 +80,12 @@ export default function ExcercisesComponent() {
     }
   }
 
-  useEffect(() => { getExcercises(); getSavedExcercises() }, [])
-
-  useEffect(() => { 
-    getExcercises();
-    window.scrollTo({top: 0, left: 0, behavior: 'smooth' });
-
-}, [currentPage])
-
-
+  useEffect(() => {getSavedExcercises() }, [])
 
 
   return (
     <div className={styles.page}>
-      <h1 className='text-main'>Excercises</h1>
+      <h1 className='text-main'>Saved Excercises</h1>
 
       <div className={styles.boxes}>
         {
@@ -136,27 +119,7 @@ export default function ExcercisesComponent() {
         }
       </div>
       
-      <div className={styles.pagination}>
-
-      <Pagination> 
-        <Pagination.Prev onClick={prevPage}/> 
-        <Pagination.Ellipsis />
-
-        {
-          currentPage == 0?
-          <></>
-          :
-          <Pagination.Item onClick={prevPage}>{currentPage}</Pagination.Item>
-        }
-        <Pagination.Item active>{currentPage + 1}</Pagination.Item> 
-
-        {
-          <Pagination.Item onClick={nextPage}>{currentPage + 2}</Pagination.Item> 
-        }
-        <Pagination.Ellipsis /> 
-        <Pagination.Next onClick={nextPage}/> 
-      </Pagination> 
-      </div>
+      
 
     </div>
   )

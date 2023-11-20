@@ -10,12 +10,11 @@ const secret = '0af2ef152c8a52b057af3eb9092f5aa0';
 
 
 export default async function handler(req, res) {
-  
-    await dbConnect();
 
+    await dbConnect();
     console.log('finding saved excercises')
 
-  
+
 
     const token = await getToken({ req, secret })
 
@@ -31,45 +30,51 @@ export default async function handler(req, res) {
         currentUser = await User.findOne({ id: token.sub }).exec();
     }
 
-    const savedExcercises = await ExcerciseSaved.find({user: currentUser._id}).exec();
+    const savedExcercises = await ExcerciseSaved.find({ user: currentUser._id }).exec();
 
 
     let savedExcercisesData = await throwSavedExcerciseData(savedExcercises)
 
-    console.log('awaited throw function');
 
-  
+    res.send(savedExcercisesData);
+
+
+
 }
 
 
-async function throwSavedExcerciseData(savedExcercises){
-
-    console.log('inside throw function ')
+async function throwSavedExcerciseData(savedExcercises) {
 
     let savedExcercisesData = [];
 
-    savedExcercises.forEach( async elem=>{
-         console.log('individual req')
-
+    // Create an array of promises
+    const promises = savedExcercises.map(async (elem, index) => {
         const options = {
             method: 'GET',
             url: 'https://exercisedb.p.rapidapi.com/exercises/exercise/' + elem.excerciseId,
             headers: {
-              'X-RapidAPI-Key': '830872fc41msh784d7f23e99cb23p1fdb8djsn6f9e88ce458b',
-              'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+                'X-RapidAPI-Key': 'c46940a0camsh14fd75c9c89e4d5p1a1fc0jsnb5dd2face6d9',
+                'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
             }
-          };
+        };
 
-          try {
+        try {
             const response = await axios.request(options);
-            console.log(response.data.id)
             savedExcercisesData.push(response.data);
+            console.log('---------');
+            console.log(response.data);
         } catch (error) {
             console.error(error);
         }
-          
+    });
 
-    })
-    console.log({savedExcercisesData})
-    return savedExcercisesData
+    // Use Promise.all to wait for all promises to resolve
+    await Promise.all(promises);
+
+    // Now, after all requests are completed, log the savedExcercisesData
+    console.log({ savedExcercisesData });
+
+    // Assuming this is inside an async function, you can return the data
+    return savedExcercisesData;
+
 }
