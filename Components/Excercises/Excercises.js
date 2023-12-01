@@ -101,6 +101,7 @@ export default function ExcercisesComponent() {
 function viewDetails(item){
   setselectedExcercise(item);
 }
+
   return (
 
 
@@ -111,7 +112,7 @@ function viewDetails(item){
 selectedExcercise  &&
         <div className={`overlay ${styles.overlay} ${selectedExcercise?'': styles.close}`}>
         <div className={styles.popup}>
-            <h3>{selectedExcercise.title}</h3>
+            <h3>{selectedExcercise.name}</h3>
             <IoIosClose className={styles.close} size={'32px'} onClick={()=>{setselectedExcercise(null)}}/>
             <img src={selectedExcercise.gifUrl} alt="" />
             <p>Target Muscle: {selectedExcercise.target}</p>

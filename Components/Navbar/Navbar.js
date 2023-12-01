@@ -103,7 +103,7 @@ export default function Navbar({ sideBarOpen, setsideBarOpen }) {
               links.map((link) => {
                 return(
 
-                  <p className="text-main" onClick={()=>{router.push(link.href)}} >{link.name}</p>
+                  <p className="text-main" onClick={()=>{router.push('../' + link.href)}} >{link.name}</p>
                   )
               })
             }

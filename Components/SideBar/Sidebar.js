@@ -67,7 +67,7 @@ export default function Sidebar({ sideBarItems }) {
                                             accordianOpen
                                             &&
                                         <div className={`${styles.accordian} text-main`}>
-                                            <p onClick={()=>{router.push('../../../../TopicalQuestions')}}>Topical Questions</p>
+                                            <p onClick={()=>{router.push('')}}>Excercises</p>
                                             <p onClick={()=>{router.push('../../../../YearlyPapers')}}>Yearly Papers</p>
                                             <p onClick={()=>{router.push('../../../../CustomQuiz')}}>Custom Quizes</p>
                                             <p onClick={()=>{router.push('../../../RandomQuiz')}}>Random Quizes</p>
