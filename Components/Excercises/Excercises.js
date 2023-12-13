@@ -24,7 +24,9 @@ export default function ExcercisesComponent() {
 
 
 
-  async function saveExcercise(id){
+  async function saveExcercise(id, event){
+    event.stopPropagation();
+
     try{
 
       await axios.get('api/saveExcercise?id=' + id);
@@ -45,6 +47,8 @@ export default function ExcercisesComponent() {
 
 
     setsavedExcercises([...newArr])
+
+
 
   }
   
@@ -143,13 +147,13 @@ selectedExcercise  &&
                   {
                     savedExcercises.includes(item.id)?
 
-                    <div className={styles.save} onClick={()=>{saveExcercise(item.id)}}>
+                    <div className={styles.save} onClick={(event) => saveExcercise(item.id, event)}>
                     <AiFillStar size='24px' className='text-main'/>
                     <p className='text-main'>Saved</p>
                   </div>
                     :
  
-                  <div className={styles.save} onClick={()=>{saveExcercise(item.id)}}>
+                  <div className={styles.save} onClick={(event) => saveExcercise(item.id, event)}>
                     <AiOutlineStar size='24px' className='text-main'/>
                     <p className='text-main'>Save</p>
                   </div>
