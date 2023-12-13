@@ -2,7 +2,7 @@ import React from "react"
 import { useRouter } from "next/router"
 export default function LandingPageComponent() {
     return (
-      <div>
+      <div className="landingPageBody">
           <div id="page-wrapper">
           <header id="header">
               <div class="logo">

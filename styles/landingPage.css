@@ -10,52 +10,52 @@ html {
   
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap');
   
-  html * {
+  /* html * {
   font-family: 'Montserrat', sans-serif;
-  }
+  } */
   
-  #page-wrapper {
+  .landingPageBody #page-wrapper {
     position: relative;
   }
   
-  h3 {
+  .landingPageBody h3 {
     padding-top: 10px;
   }
   
-  .desc {
+  .landingPageBody .desc {
     color: gray;
     padding: 15px;
   }
   
-  .logo {
+  .landingPageBody .logo {
     display: flex;
     flex-direction: row;
   }
   
-  li, a, .button {
+  .landingPageBody li, .landingPageBody a, .landingPageBody .button {
     font-size: 18px;
     color: #FFFEF2;
     text-decoration: none;
     list-style: none;
   }
   
-  input[type="email"] {
+  .landingPageBody input[type="email"] {
     padding: 10px;
     border: none;
     margin-right: 5px;
   }
   
-  input[type="email"], textarea {
+  .landingPageBody input[type="email"], textarea {
     background-color : #343434;
     color: #FFFEF2;
     font-size: 18px;
   }
   
-  img {
+  .landingPageBody img {
     object-fit: contain;
   }
   
-  header {
+  .landingPageBody header {
     position: fixed;
     top: 0;
     padding: 0px 15px;
@@ -67,26 +67,26 @@ html {
     z-index: 1;
   }
   
-  #header, img {
+  .landingPageBody #header, .landingPageBody img {
   height: 50px;
   }
   
-  #nav-bar {
+  .landingPageBody #nav-bar {
     list-style: none;
     font-size: 10px;
     text-transform: uppercase;
   }
   
-  #nav-bar li {
+  .landingPageBody #nav-bar li {
     display: inline-block;
     padding: 0px 25px;
   }
   
-  #nav-bar li a:hover {
+  .landingPageBody #nav-bar li a:hover {
     text-decoration: underline;
   }
   
-  .button {
+  .landingPageBody .button {
     color: #FFFEF2;
     background-color: #1B1C1E;
     border-radius: 50px;
@@ -96,7 +96,7 @@ html {
     width: 120px;
   }
   
-  .button:hover {
+  .landingPageBody .button:hover {
     color: #1B1C1E;
     background-color: #FFFEF2;
     transition: all 0.5s ease;
@@ -104,30 +104,34 @@ html {
   
   
   
-  body {
+  /* body {
+    background-color: #1B1C1E;
+    color: #FFFEF2;
+  } */
+  .landingPageBody{
     background-color: #1B1C1E;
     color: #FFFEF2;
   }
   
   
-  .sub {
+  .landingPageBody .sub {
     font-size: 1.2rem;
     letter-spacing: 16px;
   }
   
-  .heading {
+  .landingPageBody .heading {
     font-weight: 600;
     font-size: 6rem;
     text-transform: uppercase;
   }
   
-  .two-column {
+  .landingPageBody .two-column {
     display: flex;
     flex-direction: row;
     margin: 150px 75px;
   }
   
-  .two-column div {
+  .landingPageBody .two-column div {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -135,7 +139,7 @@ html {
     text-align: center;
   }
   
-  .main-img {
+  .landingPageBody .main-img {
     object-fit: contain;
     max-width: 450px;
     height: auto;
@@ -146,12 +150,12 @@ html {
 
   }
   
-  .main-img:hover {
+  .landingPageBody.main-img:hover {
     filter: brightness(120%);
     transform: scale(1.1);
   }
   
-  #video {
+  .landingPageBody #video {
     object-fit: contain;
     width: 100%;
     height: 100%;
@@ -160,12 +164,12 @@ html {
     max-height: 480px;
   }
   
-  .three-column {
+  .landingPageBody .three-column {
     display:flex;
     margin: 150px 200px;
   }
   
-  .three-column div {
+  .landingPageBody .three-column div {
     display: flex;
     flex-direction: column;
     flex:1;
@@ -175,11 +179,11 @@ html {
     border-right: solid 1px white;
   }
   
-  .three-column div:last-of-type {
+  .landingPageBody .three-column div:last-of-type {
   border: none;
   }
   
-  .three-column img {
+  .landingPageBody .three-column img {
     display:flex;
     height: auto;
     max-width: 250px;
@@ -188,12 +192,12 @@ html {
     filter: grayscale(100%);
   }
   
-  .three-column img:hover {
+  .landingPageBody .three-column img:hover {
     filter: grayscale(0);
     transform: scale(1.1);
   }
   
-  .buy-btn {
+  .landingPageBody .buy-btn {
     padding: 0px 5px;
     border-radius: 10px;
     background-color: #FFFEF2;
@@ -201,30 +205,30 @@ html {
     font-size: 16px;
   }
   
-  .center {
+  .landingPageBody .center {
     text-align: center;
     width: 50%;
     margin: auto;
     margin-bottom: -100px;
   }
   
-  footer {
+  .landingPageBody footer {
     margin-top: 25px;
     background-color: black;
     padding: 15px;
   }
   
-  footer > ul {
+  .landingPageBody footer > ul {
     display: flex;
     justify-content: flex-end;
    
   }
   
-  footer > ul > li {
+  .landingPageBody footer > ul > li {
     padding: 0 10px;
   }
   
-  footer > span {
+  .landingPageBody footer > span {
     margin-top: 5px;
     display: flex;
     justify-content: flex-end;
@@ -234,39 +238,39 @@ html {
   
   @media (max-width: 1632px) {
     
-    .heading {
+    .landingPageBody .heading {
     font-weight: 600;
     font-size: 5rem;
    }
   }
   @media (max-width: 1200px) {
    
-    .two-column {
+    .landingPageBody .two-column {
     display: flex;
     flex-direction: column;
     margin: 75px;
     } 
     
-      .three-column {
+     .landingPageBody  .three-column {
     display: flex;
     flex-direction: column;
      margin: 50px;
     } 
     
-     .heading {
+   .landingPageBody  .heading {
     font-weight: 600;
     font-size: 4rem;
   }
   
-   .sub {
+  .landingPageBody .sub {
     font-size: 1.2rem;
     letter-spacing: 8px;
   } 
-    .center {
+    .landingPageBody .center {
       margin-bottom: 50px;
       width: 75%;
     }
-     .three-column div {
+     .landingPageBody .three-column div {
     padding-top: 75px;
     border: none;
     }   
@@ -274,45 +278,45 @@ html {
   }
    
     @media (max-width: 1020px) {
-      #header {
+      .landingPageBody #header {
       height: 100px;
   }
 }
   
   @media (max-width: 600px) {
-     #header {
+     .landingPageBody #header {
       height: 100px; 
     }
     
-    body {
+    .landingPageBody {
       padding-top: 50px;
     }
     
-    .heading {
+   .landingPageBody .heading {
     font-weight: 600;
     font-size: 3rem;
   }
   
-     .sub {
+    .landingPageBody .sub {
     font-size: 1rem;
     letter-spacing: 4px;
   }
     
-     .two-column {
+     .landingPageBody .two-column {
      margin: 75px 25px;
     } 
-     .three-column {
+    .landingPageBody .three-column {
     display: flex;
     flex-direction: column;
     margin: 0;
     }   
   
-     .three-column div {
+    .landingPageBody .three-column div {
     padding-top: 50px;
     border-right: none;
     }   
     
-      .center {
+      .landingPageBody .center {
       margin-bottom: 50px;
       width: 75%;
     }

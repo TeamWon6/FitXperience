@@ -53,7 +53,7 @@ async function throwSavedExcerciseData(savedExcercises) {
             method: 'GET',
             url: 'https://exercisedb.p.rapidapi.com/exercises/exercise/' + elem.excerciseId,
             headers: {
-                'X-RapidAPI-Key': 'c46940a0camsh14fd75c9c89e4d5p1a1fc0jsnb5dd2face6d9',
+                'X-RapidAPI-Key': '0eab9fdb87msh1a624a569dc0e05p17861fjsnc4706cf76fbf',
                 'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
             }
         };
