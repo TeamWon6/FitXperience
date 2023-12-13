@@ -20,6 +20,20 @@ export default function ProfilePage() {
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('Male');
 
+
+  const [userInfo, setuserInfo] = useState(null);
+
+  const getUserInfo = async ()=>{
+    console.log('getting user info')
+    const data = await axios.get('/api/getUserInfo');
+    console.log(data);
+    setuserInfo(data.data);
+  }
+
+  useEffect(()=>{
+    getUserInfo();
+  }, [])
+
   // Handler functions would be implemented here to update state and perform calculations
   const router = useRouter();
 
@@ -84,8 +98,15 @@ export default function ProfilePage() {
 
       <div className={styles.helloUser}>
         {/* <img className={styles.helloUser} src='/userProfile.jpg' alt="User" /> */}
-        <FaCircleUser size={'40px'} className="text-main" />
-        <h1 className='text-main'>Hello Saad Khan</h1>
+        {
+          userInfo
+          &&
+          <>
+          <img src={userInfo.pic}/>
+          <h1 className='text-main'>Hello {userInfo.name}</h1>
+          </>
+
+        }
       </div>
 
 

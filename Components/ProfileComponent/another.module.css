@@ -3,14 +3,19 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 30px;
+    padding-top: 20px;
 }
 .helloUser img{
     width: 50px;
+    border-radius: 50%;
 }
 .helloUser h1{
     margin: 0;
     padding: 0;
+    font-size: 1.5rem;
+}
+.page p, .page label{
+    color: #333 !important;
 }
 
 section.section1{

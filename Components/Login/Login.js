@@ -31,7 +31,7 @@ export default function LoginComponent() {
                 <a onClick={() => {
                     // signIn("google")
                     }}>
-                    <img src='../../Assets/LoginPageImages/google.png' alt="google icon" />
+                    <img src='/images/google.png' alt="google icon" />
                     <p onClick={()=>{signIn('google')}}>Continue with Google</p>
                 </a>
                 {/* <a href= {`${serverUrl}facebook`}>

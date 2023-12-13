@@ -22,6 +22,7 @@
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    color: #333 !important;
 }
 .loginCard .logoContainer img{
     width: 80px;
@@ -50,7 +51,7 @@
     padding: 15px 20px 15px 20px;
     cursor: pointer;
     text-decoration: none;
-    color: #333;
+    color: #333 !important;
 }
 .methods > a:hover{
     background-color: #f4f4f4;

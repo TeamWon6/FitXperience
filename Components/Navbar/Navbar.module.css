@@ -75,6 +75,10 @@
 .navbar .right .accountContainer{
     position: relative;
 }
+.navbar .right .accountContainer svg{
+    color: black !important;
+    cursor: pointer !important;
+}
 .navbar .right .accountContainer .dropdown{
     top: 35px
 }

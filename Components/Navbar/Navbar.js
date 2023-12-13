@@ -112,6 +112,7 @@ export default function Navbar({ sideBarOpen, setsideBarOpen }) {
         <div className={styles.right}>
          
           <div className={styles.accountContainer}>
+         
             {
               userInfo ?
 
@@ -123,7 +124,8 @@ export default function Navbar({ sideBarOpen, setsideBarOpen }) {
                 <>
 
                   <FaCircleUser 
-                  size='32px' 
+                  size='32px'
+                  className='text-main'
                   onClick={openAccountDropdown} />
 
 
@@ -230,6 +232,9 @@ function SignedInDropDown() {
 
   const items = [
     {
+      name: 'Profile'
+    },
+    {
       name: 'Logout'
     },
   ]
@@ -239,12 +244,24 @@ function SignedInDropDown() {
     >
       {
         items.map((item) => {
-          return (
+
+          if(item.name == "Logout"){
+
+            return (
             <div onClick={logout}>
              
               <p className="text-main" >{item.name}</p>
             </div>
           )
+        }
+
+        else{
+          return (
+            <div onClick={()=>{router.push('/Profile')}}>
+              <p className="text-main" >{item.name}</p>
+            </div>
+          )
+        }
         })
       }
     </div>
