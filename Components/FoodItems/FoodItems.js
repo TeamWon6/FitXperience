@@ -43,9 +43,14 @@ export default function FoodItems() {
         console.log('adding food item')
         console.log({selectedMealPlan})
         console.log(selectedFood)
-        console.log(mealPlans.current[selectedMealPlan])
 
-        const response = await axios.post('/api/addFoodItem', {params: {foodId: selectedFood.id, mealPlanId: mealPlans.current[selectedMealPlan]._id}})
+        let index = -1;
+        for (let i = 0; i < mealPlans.current.length; i++) {
+            if (mealPlans.current[i].name === selectedMealPlan) {
+              index = i;
+            }
+          }
+        const response = await axios.post('/api/addFoodItem', {params: {foodId: selectedFood.id, mealPlanId: mealPlans.current[index]._id}})
         console.log(response);
     }
 
@@ -138,7 +143,7 @@ export default function FoodItems() {
                             {
                                 selectedMealPlan != null ?
                                     <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                        Meal Plan {selectedMealPlan}
+                                        {selectedMealPlan}
                                     </Dropdown.Toggle>
                                     :
                                     <Dropdown.Toggle variant="success" id="dropdown-basic">
@@ -152,7 +157,7 @@ export default function FoodItems() {
                                 {
                                     mealPlans.current.map((elem, index) => {
                                         return (
-                                            <Dropdown.Item onClick={() => {setselectedMealPlan(index) }}>meal plan {index}</Dropdown.Item>
+                                            <Dropdown.Item onClick={() => {setselectedMealPlan(elem.name) }}>meal plan {elem.name}</Dropdown.Item>
                                         )
                                     })
                                 }

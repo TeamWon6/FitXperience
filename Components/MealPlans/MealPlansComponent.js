@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import styles from '../Excercises/Excercises.module.css'
 import styles2 from './MealPlans.module.css'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import Form from 'react-bootstrap/Form';
+
 
 axios.defaults.withCredentials = true
 
@@ -11,13 +13,17 @@ export default function MealPlansComponent() {
 
   const router = useRouter();
 
+  const planName = useRef();
+
   const [mealPlans, setmealPlans] = useState(null)
 
   async function createMealPlan(){
-    window.location.reload();
     console.log('create meal plan')
-    const response = await axios.get('api/createMealPlan');
+    
+    console.log(planName.current.value);
+    const response = await axios.get('api/createMealPlan', {params: {planName: planName.current.value}});
     console.log(response)
+    window.location.reload();
   }
 
   const getMealPlans = async function () {
@@ -31,6 +37,11 @@ export default function MealPlansComponent() {
     }
   }
 
+  const deleteMealPlan =async (id)=>{
+    await axios.get('/api/deleteMealPlan', {params: {id: id}})
+    window.location.reload();
+  }
+
   useEffect(()=>{
     getMealPlans();
   }, [])
@@ -39,7 +50,7 @@ export default function MealPlansComponent() {
   if(!mealPlans)return
 
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} ${styles2.page}`}>
 
     
 
@@ -50,8 +61,11 @@ export default function MealPlansComponent() {
       {
         mealPlans.map((elem,index)=>{
           return (
-            <div className={styles.box} onClick={()=>{router.push('/MealPlans/' + elem._id)}}>
+            <div className={styles.box2}>
               <p>{index}</p>
+              <h4>{elem.name}</h4>
+              <Button variant="primary" onClick={()=>{router.push('/MealPlans/' + elem._id)}}>View Detials</Button>
+              <Button variant="danger" onClick={()=>{deleteMealPlan(elem._id)}}>Delete</Button>
             </div>
           )
         })
@@ -59,8 +73,9 @@ export default function MealPlansComponent() {
     </div>
 
     <div className={styles2.create}>
-
-      <Button variant="primary" onClick={createMealPlan}>Create</Button>
+      <h1 className='text-main'>Create a New Meal Plan</h1>
+      <Form.Control type="text" placeholder="Normal text" ref={planName}/>
+        <Button variant="primary" onClick={createMealPlan}>Create</Button>
 
     </div>
 

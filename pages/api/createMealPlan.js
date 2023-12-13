@@ -12,6 +12,9 @@ const secret = '0af2ef152c8a52b057af3eb9092f5aa0';
 export default async function handler (req,res){
     await dbConnect();
 
+    console.log('creating meal plan')
+    console.log(req.query)
+
     const token = await getToken({ req, secret })
     const session = await getSession({ req })
 
@@ -22,7 +25,8 @@ export default async function handler (req,res){
     const currentUser = await User.findOne({id:token.sub}).exec();
    
     const mealPlan = new MealPlan({
-        user: currentUser._id
+        user: currentUser._id,
+        name: req.query.planName
     })
     await mealPlan.save();
     
