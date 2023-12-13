@@ -89,7 +89,7 @@ export default function ExcercisesComponent() {
     }
   }
 
-  useEffect(() => { getExcercises();}, [])
+  useEffect(() => { getExcercises(); getSavedExcercises()}, [])
 
   useEffect(() => { 
     getExcercises();
