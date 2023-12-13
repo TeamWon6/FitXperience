@@ -1,5 +1,6 @@
 import '../styles/app.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/landingPage.css'
 
 
 import theme from '../utils/theme'
