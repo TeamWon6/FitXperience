@@ -85,7 +85,7 @@ export default function SavedExcercisesComponent() {
 
   return (
     <div className={styles.page}>
-      <h1 className='text-main'>Saved Excercises</h1>
+      <h1 className='text-main'>Saved Exercises</h1>
 
       <div className={styles.boxes}>
         {

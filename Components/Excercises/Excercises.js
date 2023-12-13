@@ -129,7 +129,7 @@ selectedExcercise  &&
       }
 
 
-      <h1 className='text-main'>Excercises</h1>
+      <h1 className='text-main'>Exercises</h1>
 
       <div className={styles.boxes}>
         {

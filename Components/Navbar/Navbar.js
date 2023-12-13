@@ -11,11 +11,11 @@ import axios from 'axios';
 
 const links = [
   {
-    name: 'Excercises',
+    name: 'Exercises',
     href: 'Excercises',
   },
   {
-    name: 'Saved Excercises',
+    name: 'Saved Exercises',
     href: 'SavedExcercises',
   },
   {
