@@ -52,6 +52,7 @@ export default function FoodItems() {
           }
         const response = await axios.post('/api/addFoodItem', {params: {foodId: selectedFood.id, mealPlanId: mealPlans.current[index]._id}})
         console.log(response);
+        setselectedFood(null);
     }
 
     useEffect(() => {
