@@ -13,22 +13,22 @@ import {SessionProvider} from 'next-auth/react'
 // const { serverUrl } = data;
 const sideBarItems = [
     {
-        name: 'Dashboard',
-        link: 'Dashboard'
+        name: 'Exercises',
+        link: 'Excercises'
     },
    
     {
-        name: 'Questions',
-        link: '#'
+        name: 'Saved Excercises',
+        link: 'SavedExcercises'
     },
     
     {
-        name: 'Contact Us',
-        link: 'Contact'
+        name: 'Food Items',
+        link: 'Food'
     },
     {
-        name: 'Pricing',
-        link: 'Upgrade'
+        name: 'Meal Plans',
+        link: 'MealPlans'
     },
 ]
 

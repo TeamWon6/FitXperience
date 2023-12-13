@@ -127,14 +127,14 @@ export default function ProfilePage() {
           <div className={styles.input}>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Height</Form.Label>
-              <Form.Control type="number" placeholder="Enter height in kgs" onChange={(e) => setHeight(e.target.value)} value={height}/>
+              <Form.Control type="number" placeholder="Enter height in inches" onChange={(e) => setHeight(e.target.value)} value={height}/>
             </Form.Group>
           </div>
           <div className={styles.input}>
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Age</Form.Label>
-              <Form.Control type="number" placeholder="Enter age in kgs" onChange={(e) => setAge(e.target.value)} value={age}/>
+              <Form.Control type="number" placeholder="Enter age in years" onChange={(e) => setAge(e.target.value)} value={age}/>
             </Form.Group>
           </div>
 
